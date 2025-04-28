@@ -31,9 +31,22 @@ export const useProjectStore = create<ProjectStore>((set) => ({
   error: null,
   selectedProject: null,
   setProjects: (projects) => set({ projects }),
-  addProject: (project) => set((state) => ({ 
-    projects: [...state.projects, project] 
-  })),
+  addProject: (project) => set((state) => {
+    // Check if project already exists
+    const exists = state.projects.some(p => 
+      p.id === project.id && 
+      p.name === project.name && 
+      p.location === project.location
+    );
+    
+    if (exists) {
+      return state;
+    }
+    
+    return { 
+      projects: [...state.projects, project] 
+    };
+  }),
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
   setSelectedProject: (project) => set({ selectedProject: project }),

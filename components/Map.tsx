@@ -86,9 +86,9 @@ export default function Map({ cityName }: { cityName?: string }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        {projects.filter(p => p.coordinates).map((project) => (
+        {projects.filter(p => p.coordinates).map((project, index) => (
           <Marker
-            key={project.id}
+            key={`${project.id}-${project.name}-${index}`}
             position={[
               project.coordinates!.latitude,
               project.coordinates!.longitude

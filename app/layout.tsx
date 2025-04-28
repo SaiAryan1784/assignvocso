@@ -1,13 +1,16 @@
 // app/layout.tsx
 
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Footer from '@/components/Footer'
+import Navbar from '@/components/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Real Estate Project Listings',
-  description: 'Browse real estate projects across different cities',
+export const metadata: Metadata = {
+  title: 'Real Estate Project Finder',
+  description: 'Discover real estate projects across major Indian cities',
 }
 
 export default function RootLayout({
@@ -18,17 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header className="bg-blue-600 text-white p-4 shadow-md">
-          <div className="container mx-auto">
-            <h1 className="text-2xl font-bold">MagicBricks Project Finder</h1>
-          </div>
-        </header>
-        {children}
-        <footer className="bg-gray-100 p-4 mt-8">
-          <div className="container mx-auto text-center text-gray-600">
-            <p>© {new Date().getFullYear()} Real Estate Project Listings</p>
-          </div>
-        </footer>
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )

@@ -1,16 +1,20 @@
 // src/components/ProjectCard.tsx
 import { Project } from '@/lib/store';
 
+interface ProjectCardProps {
+  project: Project;
+  onClick: () => void;
+  className?: string;
+}
+
 export default function ProjectCard({ 
   project, 
-  onClick 
-}: { 
-  project: Project; 
-  onClick: () => void;
-}) {
+  onClick,
+  className
+}: ProjectCardProps) {
   return (
     <div 
-      className="border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+      className={`border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer ${className}`}
       onClick={onClick}
     >
       <h3 className="text-lg font-bold">{project.name}</h3>

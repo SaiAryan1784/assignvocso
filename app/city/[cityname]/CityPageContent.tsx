@@ -5,13 +5,18 @@ import { useProjectStore } from '@/lib/store';
 import ProjectList from '@/components/ProjectList';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import dynamic from 'next/dynamic';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const MapWithNoSSR = dynamic(() => import('@/components/Map'), {
   ssr: false,
   loading: () => (
-    <div className="h-full w-full bg-gray-200 flex items-center justify-center">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="h-full w-full bg-gray-200 flex items-center justify-center"
+    >
       <div className="text-gray-600">Loading map...</div>
-    </div>
+    </motion.div>
   ),
 });
 
@@ -58,24 +63,56 @@ export default function CityPageContent({ cityname }: { cityname: string }) {
   }, [cityName, setProjects, addProject, setLoading, setError]);
 
   return (
-    <main className="container mx-auto p-4 pt-6">
-      <div className="flex items-center mb-6">
+    <motion.main 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="container mx-auto p-4 pt-6"
+    >
+      <motion.div 
+        className="flex items-center mb-6"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <h2 className="text-3xl font-bold">Real Estate Projects in {cityName}</h2>
-        {loading && (
-          <div className="ml-4">
-            <LoadingSpinner />
-          </div>
-        )}
-      </div>
+        <AnimatePresence>
+          {loading && (
+            <motion.div 
+              className="ml-4"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+            >
+              <LoadingSpinner />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="md:col-span-1">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+      >
+        <motion.div 
+          className="md:col-span-1"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.4 }}
+        >
           <ProjectList />
-        </div>
-        <div className="md:col-span-2 h-[600px] bg-gray-200 rounded-lg shadow-md overflow-hidden">
+        </motion.div>
+        <motion.div 
+          className="md:col-span-2 h-[600px] bg-gray-200 rounded-lg shadow-md overflow-hidden"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5 }}
+        >
           <MapWithNoSSR cityName={cityName} />
-        </div>
-      </div>
-    </main>  
+        </motion.div>
+      </motion.div>
+    </motion.main>  
   );
 }
