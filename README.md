@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AssignVocso - Real Estate Project Viewer
+
+> This project was created as part of a technical assignment for Vocso. It demonstrates real estate project visualization using mock data.
+
+## Tech Stack
+
+- Next.js 15
+- TypeScript
+- Zustand for state management
+- Leaflet for maps
+- Tailwind CSS for styling
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+Then, run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 🏘️ Display of mock real estate project data
+- 🗺️ Interactive map visualization using Leaflet
+- 📍 Geocoding integration
+- 🏃‍♂️ Real-time loading states
+- 📱 Responsive design
+- 🔄 Incremental data loading
+
+## Project Structure
+
+```
+assignvocso/
+├── app/
+│   ├── api/          # API routes with mock data
+│   ├── city/         # City-specific pages
+│   └── page.tsx      # Home page
+├── components/       # Reusable React components
+├── lib/             # Utilities and store
+│   └── mockData/    # Mock data files
+└── types/           # TypeScript type definitions
+```
+
+## Environment Setup
+
+Create a `.env.local` file in the root directory:
+
+```plaintext
+NEXT_PUBLIC_MOCK_DATA=true
+NEXT_PUBLIC_GEOCODING_API_KEY=your_geocoding_api_key
+```
+
+## Available Cities
+
+The application currently supports viewing real estate projects in:
+- Mumbai
+- Delhi
+- Bangalore
+- Hyderabad
+- Chennai
+- Kolkata
+- Pune
+- Ahmedabad
+
+## Development
+
+### Making Changes
+
+You can start editing the pages by modifying files in the `app` directory. The pages auto-update as you edit the files.
+
+### Components
+
+The project uses a component-based architecture:
+- `ProjectList`: Displays the list of real estate projects
+- `ProjectCard`: Individual project display component
+- `Map`: Interactive map visualization using Leaflet
+- `LoadingSpinner`: Loading state indicator
+
+## Notes
+
+- This project uses mock data instead of live scraping
+- The map view is client-side rendered to avoid SSR issues with Leaflet
+- City data is loaded incrementally for better user experience
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about the technologies used:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Zustand State Management](https://github.com/pmndrs/zustand)
+- [Leaflet Maps](https://leafletjs.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Disclaimer
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is a technical assessment project created for Vocso and uses mock data for demonstration purposes.
