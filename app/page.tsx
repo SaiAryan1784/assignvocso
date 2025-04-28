@@ -4,6 +4,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import ProjectCarousel from '@/components/ProjectCarousel';
 
 export default function Home() {
   const popularCities = [
@@ -54,12 +55,14 @@ export default function Home() {
             Discover new real estate projects across major Indian cities. Find your dream property with our interactive map and detailed project listings.
           </p>
         </motion.div>
+
+        
         
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto my-30"
         >
           <motion.h2 
             variants={itemVariants}
@@ -87,6 +90,8 @@ export default function Home() {
             ))}
           </div>
         </motion.div>
+
+        <ProjectCarousel />
         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
