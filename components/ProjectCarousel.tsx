@@ -46,6 +46,38 @@ const featuredProjects: Project[] = [
     priceRange: "₹1.5 Cr - ₹3 Cr",
     builder: "Brigade Group",
     city: "Hyderabad"
+  },
+  {
+    id: 5,
+    name: "Sobha Dream Gardens",
+    location: "Pallikaranai, Chennai",
+    priceRange: "₹1 Cr - ₹2.5 Cr",
+    builder: "Sobha Limited",
+    city: "Chennai"
+  },
+  {
+    id: 6,
+    name: "Tata New Haven",
+    location: "New Town, Kolkata",
+    priceRange: "₹80 L - ₹2 Cr",
+    builder: "Tata Housing",
+    city: "Kolkata"
+  },
+  {
+    id: 7,
+    name: "Mahindra LifeSpaces",
+    location: "Hinjewadi, Pune",
+    priceRange: "₹1.2 Cr - ₹2.5 Cr",
+    builder: "Mahindra Group",
+    city: "Pune"
+  },
+  {
+    id: 8,
+    name: "Adani Shantigram",
+    location: "SG Highway, Ahmedabad",
+    priceRange: "₹90 L - ₹2 Cr",
+    builder: "Adani Realty",
+    city: "Ahmedabad"
   }
 ];
 
@@ -153,7 +185,7 @@ export default function ProjectCarousel() {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="flex justify-center mt-4 space-x-2">
+      <div className="flex justify-center mt-4 space-x-3">
         {featuredProjects.map((_, index) => (
           <button
             key={index}
@@ -161,8 +193,10 @@ export default function ProjectCarousel() {
               setDirection(index > currentIndex ? 1 : -1);
               setCurrentIndex(index);
             }}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentIndex ? 'bg-blue-600' : 'bg-gray-300'
+            className={`w-4 h-4 rounded-full transition-all duration-300 ${
+              index === currentIndex 
+                ? 'bg-blue-600 scale-125 ring-2 ring-blue-400 ring-offset-2' 
+                : 'bg-gray-300 hover:bg-gray-400'
             }`}
           />
         ))}

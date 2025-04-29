@@ -13,7 +13,7 @@ const MapWithNoSSR = dynamic(() => import('@/components/Map'), {
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="h-full w-full bg-gray-200 flex items-center justify-center"
+      className="h-full w-full flex items-center justify-center"
     >
       <div className="text-gray-600">Loading map...</div>
     </motion.div>
@@ -105,7 +105,7 @@ export default function CityPageContent({ cityname }: { cityname: string }) {
           <ProjectList />
         </motion.div>
         <motion.div 
-          className="md:col-span-2 h-[600px] bg-gray-200 rounded-lg shadow-md overflow-hidden"
+          className="md:col-span-2 h-[500px] rounded-lg overflow-hidden"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
